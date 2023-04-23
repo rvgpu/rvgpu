@@ -1,0 +1,6 @@
+[submodule "rvgpu-mesa"]
+	path = rvgpu-mesa
+	url = https://gitee.com/sietium-research/rvgpu-mesa.git
+[submodule "rvgpu-cmodel"]
+	path = rvgpu-cmodel
+	url = https://gitee.com/sietium-research/rvgpu-cmodel.git
