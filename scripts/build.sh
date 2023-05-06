@@ -31,7 +31,7 @@ function build_rvgsim
     if [ -f rvgpu-cmodel/README.md ]; then
         if [ ! -d ${rvgsim_build_dir} ]; then
             mkdir -p ${rvgsim_build_dir}
-            cmake -B ${rvgsim_build_dir} ${rvgsim_dir} -DCMAKE_INSTALL_PREFIX=${rvgsim_install_dir}
+            cmake -B ${rvgsim_build_dir} ${rvgsim_dir} -DCMAKE_INSTALL_PREFIX=${rvgsim_install_dir} -DCMAKE_BUILD_TYPE=debug
         fi
         cmake --build ${rvgsim_build_dir}
         cmake --install ${rvgsim_build_dir}
