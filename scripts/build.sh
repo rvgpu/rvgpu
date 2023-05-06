@@ -18,6 +18,11 @@ function build_mesa
             meson ${mesa_build_dir} rvgpu-mesa -Dprefix=${mesa_install_dir} -Dgallium-drivers= -Dvulkan-drivers=rvgpu -Dplatforms=x11 -Dglx=disabled -Dbuildtype=debug
         fi
         ninja -C ${mesa_build_dir} install
+
+        if [ $? -ne 0 ]; then
+            echo "build rvgpu-mesa failed and exit"
+            exit -1
+        fi
     else
         echo "rvgpu-mesa is a illegal repos under this project"
     fi
@@ -34,6 +39,11 @@ function build_rvgsim
             cmake -B ${rvgsim_build_dir} ${rvgsim_dir} -DCMAKE_INSTALL_PREFIX=${rvgsim_install_dir} -DCMAKE_BUILD_TYPE=debug
         fi
         cmake --build ${rvgsim_build_dir}
+        if [ $? -ne 0 ]; then
+            echo "build rvgpu-sim failed and exit"
+            exit -1
+        fi
+
         cmake --install ${rvgsim_build_dir}
     else
         echo "rvgpu-cmodel is a illegal repos under this project"
