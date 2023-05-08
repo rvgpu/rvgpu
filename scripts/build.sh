@@ -9,6 +9,8 @@ function build_env
 
 function build_mesa
 {
+    echo "####################################################"
+    echo "# start build mesa"
     mesa_dir=${PWD}/rvgpu-mesa
     mesa_build_dir=${PWD}/build/rvgpu-mesa
     mesa_install_dir=${PWD}/install
@@ -26,10 +28,14 @@ function build_mesa
     else
         echo "rvgpu-mesa is a illegal repos under this project"
     fi
+    echo "# build mesa done"
+    echo "####################################################"
 }
 
 function build_rvgsim
 {
+    echo "####################################################"
+    echo "# start build rvgsim"
     rvgsim_dir=${PWD}/rvgpu-cmodel
     rvgsim_build_dir=${PWD}/build/rvgpu-cmodel
     rvgsim_install_dir=${PWD}/install
@@ -48,6 +54,8 @@ function build_rvgsim
     else
         echo "rvgpu-cmodel is a illegal repos under this project"
     fi
+    echo "# build rvgsim done"
+    echo "####################################################"
 }
 
 build_env
