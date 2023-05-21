@@ -17,7 +17,14 @@ function build_mesa
 
     if [ -f rvgpu-mesa/README.md ]; then
         if [ ! -d ${mesa_build_dir} ]; then
-            meson ${mesa_build_dir} rvgpu-mesa -Dprefix=${mesa_install_dir} -Dgallium-drivers= -Dvulkan-drivers=rvgpu -Dplatforms=x11 -Dglx=disabled -Dbuildtype=debug
+            meson ${mesa_build_dir} rvgpu-mesa  \
+                -Dprefix=${mesa_install_dir} \
+                -Dgallium-drivers=  \
+                -Dvulkan-drivers=rvgpu \
+                -Dplatforms=x11 \
+                -Dglx=disabled \
+                -Dbuildtype=debug \
+                -Dlibdir=lib
         fi
         ninja -C ${mesa_build_dir} install
 
@@ -58,7 +65,42 @@ function build_rvgsim
     echo "####################################################"
 }
 
+function build_llvm
+{
+    echo "####################################################"
+    echo "# start build LLVM"
+    llvm_dir=${PWD}/rvgpu-llvm
+    llvm_build_dir=${PWD}/build/rvgpu-llvm
+    llvm_install_dir=${PWD}/install
+    if [ -f rvgpu-llvm/README.md ]; then
+        if [ ! -d ${llvm_build_dir} ]; then
+            mkdir -p ${llvm_build_dir}
+            cmake -S ${llvm_dir}/llvm \
+                  -B ${llvm_build_dir} \
+                  -G "Ninja" \
+                  -DCMAKE_INSTALL_PREFIX=${llvm_install_dir} \
+                  -DCMAKE_BUILD_TYPE=debug \
+                  -DBUILD_SHARED_LIBS=on \
+                  -DLLVM_ENABLE_PROJECTS="clang" \
+                  -DLLVM_TARGETS_TO_BUILD=RISCV
+
+        fi
+        cmake --build ${llvm_build_dir} -j 1
+        if [ $? -ne 0 ]; then
+            echo "build rvgpu-llvm failed and exit"
+            exit -1
+        fi
+
+        cmake --install ${llvm_build_dir}
+    else
+        echo "rvgpu-llvm is a illegal repos under this project"
+    fi
+    echo "# build LLVM done"
+    echo "####################################################"
+}
+
 build_env
 
 build_mesa
 build_rvgsim
+build_llvm
