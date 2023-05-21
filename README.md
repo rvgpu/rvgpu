@@ -13,7 +13,11 @@ RVGPU仓库包含如下的子项目和目录：
 ```
 
 # 如何构建
-此项目使用git submodule来管理，使用如下命令来初始化仓库： 
+此项目使用git submodule来管理，为了使镜像仓库保持一致，如果使用gitee的地址需要将url更新为gitee上面的仓库地址，可以使用如下命令：
+```
+./scripts/updata_submodule_urls.sh
+```
+接下来使用如下命令来初始化仓库：
 ```
 git clone https://gitee.com/sietium-research/rvgpu.git
 git submodule init
