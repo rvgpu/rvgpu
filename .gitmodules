@@ -4,3 +4,6 @@
 [submodule "rvgpu-cmodel"]
 	path = rvgpu-cmodel
 	url = https://gitee.com/sietium-research/rvgpu-cmodel.git
+[submodule "rvgpu-llvm"]
+	path = rvgpu-llvm
+	url = https://gitee.com/sietium-research/rvgpu-llvm.git
