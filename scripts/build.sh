@@ -85,7 +85,7 @@ function build_llvm
                   -DLLVM_TARGETS_TO_BUILD=RISCV
 
         fi
-        cmake --build ${llvm_build_dir} -j 1
+        cmake --build ${llvm_build_dir}
         if [ $? -ne 0 ]; then
             echo "build rvgpu-llvm failed and exit"
             exit -1
