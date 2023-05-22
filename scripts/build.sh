@@ -82,7 +82,8 @@ function build_llvm
                   -DCMAKE_BUILD_TYPE=debug \
                   -DBUILD_SHARED_LIBS=on \
                   -DLLVM_ENABLE_PROJECTS="clang" \
-                  -DLLVM_TARGETS_TO_BUILD=RISCV
+                  -DLLVM_TARGETS_TO_BUILD=RISCV \
+                  -DLLVM_DEFAULT_TARGET_TRIPLE="riscv64-unknown-linux-gnu"
 
         fi
         cmake --build ${llvm_build_dir}
