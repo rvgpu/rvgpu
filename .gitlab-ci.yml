@@ -1,7 +1,0 @@
-docs-job:
-  stage: build
-  script:
-    - echo "build docs for rvgpu"
-    - cd docs
-    -   make html
-    -   rsync -rat _build/html/* ci@ubuntu-server-01:/home/rvgpu/pages/
