@@ -7,3 +7,6 @@
 [submodule "rvgpu-llvm"]
 	path = rvgpu-llvm
 	url = http://10.100.101.58/rvgpu/rvgpu-llvm.git
+[submodule "docs"]
+	path = docs
+	url = http://gitlab.inner.com/rvgpu/docs.git
