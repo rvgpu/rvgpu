@@ -1,5 +1,5 @@
 docs-job:
-  stage: docs
+  stage: build
   script:
     - echo "build docs for rvgpu"
     - cd docs
