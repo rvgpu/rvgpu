@@ -10,3 +10,6 @@
 [submodule "docs"]
 	path = docs
 	url = http://gitlab.inner.com/rvgpu/docs.git
+[submodule "tools"]
+	path = tools
+	url = http://gitlab.inner.com/rvgpu/tools.git
