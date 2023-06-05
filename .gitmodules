@@ -13,3 +13,6 @@
 [submodule "tools"]
 	path = tools
 	url = http://10.100.101.58/rvgpu/tools.git
+[submodule "qemu"]
+	path = qemu
+	url = http://10.100.101.58/rvgpu/qemu.git
