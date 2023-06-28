@@ -1,4 +1,4 @@
 # 关于RVGPU
 我们将基于RISC-V的指令集实现一个开源的GPU，并且将实现vulkan接口，这个项目我们将其命名为RVGPU，取名RISC-V GPU之意。
 
-访问 [项目主页](https://rvgpu.github.io/pages)
+访问 [项目文档](https://rvgpu.github.io)
