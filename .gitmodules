@@ -6,7 +6,7 @@
 	url = https://gitee.com/rvgpu/rvgpu-cmodel.git
 [submodule "rvgpu-llvm"]
 	path = rvgpu-llvm
-	url = https://gitee.com/rvgpu/rvgpu-llvm.git
+	url = https://github.com/rvgpu/rvgpu-llvm.git
 [submodule "docs"]
 	path = docs
 	url = https://gitee.com/rvgpu/docs.git
