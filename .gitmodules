@@ -1,18 +1,24 @@
 [submodule "rvgpu-mesa"]
 	path = rvgpu-mesa
 	url = https://gitee.com/rvgpu/rvgpu-mesa.git
+    branch = rvgpu
 [submodule "rvgpu-cmodel"]
 	path = rvgpu-cmodel
 	url = https://gitee.com/rvgpu/rvgpu-cmodel.git
+    branch = main
 [submodule "rvgpu-llvm"]
 	path = rvgpu-llvm
 	url = https://github.com/rvgpu/rvgpu-llvm.git
+    branch = rvgpu
 [submodule "docs"]
 	path = docs
 	url = https://gitee.com/rvgpu/docs.git
+    branch = main
 [submodule "tools"]
 	path = tools
 	url = https://gitee.com/rvgpu/tools.git
+    branch = main
 [submodule "qemu"]
 	path = qemu
 	url = https://gitee.com/rvgpu/qemu.git
+    branch = rvgpu
