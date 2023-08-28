@@ -22,3 +22,7 @@
 	path = qemu
 	url = https://gitee.com/rvgpu/qemu.git
     branch = rvgpu
+[submodule "kmod-drv"]
+	path = kmod-drv
+	url = https://gitee.com/rvgpu/kmod-drv.git
+	branch = main
