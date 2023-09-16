@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MESA3D 中环境变量使用说明 &mdash; rvgpu 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="文档资料索引" href="../../docsref/docsref.html" />
+    <link rel="prev" title="RVGPU命令流" href="../rvgpu/command_stream.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            rvgpu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/build.html">RVGPU 构建和使用</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rvgpu/command_stream.html">RVGPU命令流</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MESA3D 中环境变量使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mesa">MESA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gallium">Gallium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gallivm">Gallivm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nir">NIR</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docsref/docsref.html">文档资料索引</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">rvgpu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MESA3D 中环境变量使用说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/develop/mesa/environment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesa3d">
+<h1>MESA3D 中环境变量使用说明<a class="headerlink" href="#mesa3d" title="Permalink to this heading"></a></h1>
+<section id="mesa">
+<h2>MESA<a class="headerlink" href="#mesa" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>环境变量</p></td>
+<td><p>设置的值</p></td>
+<td><p>作用</p></td>
+</tr>
+<tr class="row-even"><td rowspan="11"><p>MESA_GLSL</p></td>
+<td><p>dump</p></td>
+<td><p>dump shader 到 stdout</p></td>
+</tr>
+<tr class="row-odd"><td><p>log</p></td>
+<td><p>dump shader 到文件</p></td>
+</tr>
+<tr class="row-even"><td><p>uniforms</p></td>
+<td><p>打印glUniform的调用</p></td>
+</tr>
+<tr class="row-odd"><td><p>nop_vert</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>nop_frag</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>use_prog</p></td>
+<td><p>打印 glUseProgram调用</p></td>
+</tr>
+<tr class="row-even"><td><p>report_errors</p></td>
+<td><p>打印编译错误</p></td>
+</tr>
+<tr class="row-odd"><td><p>dump_on_error</p></td>
+<td><p>错误时dump</p></td>
+</tr>
+<tr class="row-even"><td><p>cache_info</p></td>
+<td><p>打印cache信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>cache_fallback</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>source</p></td>
+<td><p>仅dump GLSL</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gallium">
+<h2>Gallium<a class="headerlink" href="#gallium" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>环境变量</p></td>
+<td><p>设置的值</p></td>
+<td><p>作用</p></td>
+</tr>
+<tr class="row-even"><td><p>GALLIUM_LOG_FILE</p></td>
+<td><p>filename</p></td>
+<td><p>将Gallium的日志保存在制定的文件中，
+可以设置为stdout将日志输出到标准输出</p></td>
+</tr>
+<tr class="row-odd"><td><p>GALLIUM_NOSSE</p></td>
+<td><p>bool</p></td>
+<td><p>设定GALLIUM是否使用SSE的扩展指令集</p></td>
+</tr>
+<tr class="row-even"><td><p>GALLIUM_DUMP_CPU</p></td>
+<td><p>bool</p></td>
+<td><p>设定是否将CPU的信息打印出来</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gallivm">
+<h2>Gallivm<a class="headerlink" href="#gallivm" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>环境变量</p></td>
+<td><p>设置的值</p></td>
+<td><p>作用</p></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>GALLIVM_DEBUG</p></td>
+<td><p>tgsi</p></td>
+<td><p>打印输出TGSI的信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>ir</p></td>
+<td><p>打印输出LLVM IR的信息</p></td>
+</tr>
+<tr class="row-even"><td><p>asm</p></td>
+<td><p>打印输出目标的会编码</p></td>
+</tr>
+<tr class="row-odd"><td><p>perf</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-even"><td><p>gc</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-odd"><td><p>dumpbc</p></td>
+<td><p>将BC信息dump到文件中</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nir">
+<h2>NIR<a class="headerlink" href="#nir" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>环境变量</p></td>
+<td><p>设置的值</p></td>
+<td><p>作用</p></td>
+</tr>
+<tr class="row-even"><td rowspan="23"><p>NIR_DEBUG</p></td>
+<td><p>clone</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-odd"><td><p>serialize</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-even"><td><p>novalidate</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-odd"><td><p>validate_ssa_dominance</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-even"><td><p>tgsi</p></td>
+<td><p>在做NIR&lt;-&gt;TGSI转换时DUMP NIR/TGSI</p></td>
+</tr>
+<tr class="row-odd"><td><p>print</p></td>
+<td><p>DUMP shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_vs</p></td>
+<td><p>DUMP vs shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_tcs</p></td>
+<td><p>DUMP tcs shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_tes</p></td>
+<td><p>DUMP tes shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_gs</p></td>
+<td><p>DUMP gs shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_fs</p></td>
+<td><p>DUMP fs shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_cs</p></td>
+<td><p>DUMP cs shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_ts</p></td>
+<td><p>DUMP task shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_ms</p></td>
+<td><p>DUMP mesh shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_rgs</p></td>
+<td><p>DUMP raygen shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_ahs</p></td>
+<td><p>DUMP any-hit shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_chs</p></td>
+<td><p>DUMP closest-hit shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_mhs</p></td>
+<td><p>DUMP miss-hit shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_is</p></td>
+<td><p>DUMP intersection shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_cbs</p></td>
+<td><p>DUMP callable shader</p></td>
+</tr>
+<tr class="row-even"><td><p>print_ks</p></td>
+<td><p>DUMP kernel shader</p></td>
+</tr>
+<tr class="row-odd"><td><p>print_consts</p></td>
+<td><p>打印const值</p></td>
+</tr>
+<tr class="row-even"><td><p>print_internal</p></td>
+<td><p>打印内部shader</p></td>
+</tr>
+</tbody>
+</table>
+<p>参考资料：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitee.com/rvgpu/rvgpu-mesa/blob/rvgpu/src/compiler/nir/nir.c#L45">https://gitee.com/rvgpu/rvgpu-mesa/blob/rvgpu/src/compiler/nir/nir.c#L45</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../rvgpu/command_stream.html" class="btn btn-neutral float-left" title="RVGPU命令流" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../docsref/docsref.html" class="btn btn-neutral float-right" title="文档资料索引" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, qihangkong.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

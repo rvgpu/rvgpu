@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RVGPU 构建和使用 &mdash; rvgpu 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vulkan Tutorial" href="build_vulkan_demos.html" />
+    <link rel="prev" title="RVGPU" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            rvgpu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RVGPU 构建和使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1. 构建RVGPU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1 初始化仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.2 如何运行</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2. 使用源码编译第三方库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_vulkan_demos.html">Vulkan Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/rvgpu/command_stream.html">RVGPU命令流</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/mesa/environment.html">MESA3D 中环境变量使用说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docsref/docsref.html">文档资料索引</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">rvgpu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RVGPU 构建和使用</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guide/build.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rvgpu">
+<h1>RVGPU 构建和使用<a class="headerlink" href="#rvgpu" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>1. 构建RVGPU<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3>1.1 初始化仓库<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>为了方便管理仓库，此项目使用git submodule来管理，所以只需要访问rvgpu顶层仓库就可以通过submodule来
+克隆项目的所有子仓库。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitee</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rvgpu</span><span class="o">/</span><span class="n">rvgpu</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>接下来使用如下命令来初始化仓库：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>可以查看所有子模块的分支全部切换到了开发分支上：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>zac@st-ubuntu:~/git/tmp/rvgpu$ git submodule foreach git branch
+Entering &#39;docs&#39;
+* main
+Entering &#39;qemu&#39;
+* rvgpu
+Entering &#39;rvgpu-cmodel&#39;
+* main
+Entering &#39;rvgpu-llvm&#39;
+* rvgpu
+Entering &#39;rvgpu-mesa&#39;
+* rvgpu
+Entering &#39;tools&#39;
+* main
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>1.2 如何运行<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>目前v0.1版本C模型已经完成，可以独立运行,如下命令可以运行cmodel的测试用例:</p>
+<p>在ubuntu23.04系统上运行，安装依赖环境:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">-</span><span class="n">riscv64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span> <span class="n">g</span><span class="o">++-</span><span class="n">riscv64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span>
+</pre></div>
+</div>
+<p>编译C模型：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">rvgpu</span><span class="o">-</span><span class="n">cmodel</span>
+<span class="n">mkdir</span> <span class="n">build</span><span class="p">;</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">../</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j32</span>
+</pre></div>
+</div>
+<p>运行测试用例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>2. 使用源码编译第三方库<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>在开发过程中，往往需要编译构建第三方库，下面的列表是构建第三方仓库的参考文档：</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build_vulkan_demos.html">Vulkan Tutorial</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="RVGPU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build_vulkan_demos.html" class="btn btn-neutral float-right" title="Vulkan Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, qihangkong.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

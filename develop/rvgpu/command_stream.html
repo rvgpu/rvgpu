@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RVGPU命令流 &mdash; rvgpu 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MESA3D 中环境变量使用说明" href="../mesa/environment.html" />
+    <link rel="prev" title="Vulkan Tutorial" href="../../guide/build_vulkan_demos.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            rvgpu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/build.html">RVGPU 构建和使用</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RVGPU命令流</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-stream">Command Stream</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mesa/environment.html">MESA3D 中环境变量使用说明</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docsref/docsref.html">文档资料索引</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">rvgpu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RVGPU命令流</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/develop/rvgpu/command_stream.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rvgpu">
+<h1>RVGPU命令流<a class="headerlink" href="#rvgpu" title="Permalink to this heading"></a></h1>
+<section id="command-stream">
+<h2>Command Stream<a class="headerlink" href="#command-stream" title="Permalink to this heading"></a></h2>
+<p>RVGPU的命令流（command stream）是CPU控制GPU的命令组合，RVGPU中的命令包含如下：</p>
+<ul class="simple">
+<li><p>顶点处理命令</p></li>
+<li><p>像素处理命令</p></li>
+<li><p>… 后面会添加更多的命令</p></li>
+</ul>
+<p>command stream的格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command_stream</span>   <span class="o">-----&gt;</span>  <span class="o">+-------------+</span>
+                         <span class="o">|</span> <span class="n">Command</span> <span class="mi">1</span>   <span class="o">|</span>
+                         <span class="o">+-------------+</span>
+                         <span class="o">|</span> <span class="n">Command</span> <span class="mi">2</span>   <span class="o">|</span>
+                         <span class="o">+-------------+</span>
+                         <span class="o">|</span> <span class="n">Command</span> <span class="mi">3</span>   <span class="o">|</span>
+                         <span class="o">+-------------+</span>
+                         <span class="o">|</span> <span class="o">......</span>      <span class="o">|</span>
+                         <span class="o">+-------------+</span>
+                         <span class="o">|</span> <span class="n">END</span> <span class="n">Command</span> <span class="o">|</span>
+                         <span class="o">+-------------+</span>
+</pre></div>
+</div>
+<p>Command的结构如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">enum</span> <span class="n">cs_type</span> <span class="nb">type</span><span class="p">;</span>
+    <span class="n">union</span> <span class="p">{</span>
+        <span class="n">command_vs</span> <span class="n">vs</span><span class="p">;</span>
+        <span class="n">command_fs</span> <span class="n">fs</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">cmd</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">command</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>其中 command 类型定义如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">cs_type</span> <span class="p">{</span>
+    <span class="n">CS_TYPE_VS</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">CS_TYPE_FS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">CS_TYPE_END</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中 vs command 和 fs command 定义如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">uint32_t</span> <span class="n">vertex_count</span><span class="p">;</span>
+    <span class="n">uint64_t</span> <span class="n">shader</span><span class="p">;</span>
+    <span class="n">uint64_t</span> <span class="n">layout</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">command_vs</span><span class="p">;</span>
+
+<span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+    <span class="n">xxxxx</span>
+<span class="p">}</span> <span class="n">command_fs</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>字段 shader为一个指针，指向存储着色器程序的地址。layout为一个结构体，这个结构体是用户自定义的，指向的的是shader的输入输出接口。
+比如要进行如下的两个数组相加：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">array_b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>则这段shader程序的输入为两个数组的指针，输出为结构数组的指针，则可以定义layout为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">layout</span> <span class="p">{</span>
+    <span class="n">uint32_t</span> <span class="o">*</span><span class="n">array_a</span><span class="p">;</span>
+    <span class="n">uint32_t</span> <span class="o">*</span><span class="n">array_b</span><span class="p">;</span>
+    <span class="n">uint32_t</span> <span class="o">*</span><span class="n">array_out</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../guide/build_vulkan_demos.html" class="btn btn-neutral float-left" title="Vulkan Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../mesa/environment.html" class="btn btn-neutral float-right" title="MESA3D 中环境变量使用说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, qihangkong.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
