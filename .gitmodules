@@ -8,7 +8,7 @@
     branch = main
 [submodule "rvgpu-llvm"]
 	path = rvgpu-llvm
-	url = https://github.com/rvgpu/rvgpu-llvm.git
+	url = https://gitee.com/rvgpu/rvgpu-llvm.git
     branch = rvgpu
 [submodule "docs"]
 	path = docs
