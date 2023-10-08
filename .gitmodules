@@ -26,3 +26,6 @@
 	path = kmod-drv
 	url = https://gitee.com/rvgpu/kmod-drv.git
 	branch = main
+[submodule "gvm"]
+	path = gvm
+	url = https://gitee.com/rvgpu/gvm.git
