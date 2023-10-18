@@ -29,3 +29,7 @@
 [submodule "gvm"]
 	path = gvm
 	url = https://gitee.com/rvgpu/gvm.git
+[submodule "cuda_testbench"]
+	path = cuda_testbench
+	url = https://gitee.com/rvgpu/cuda_testbench.git
+	branch = main
