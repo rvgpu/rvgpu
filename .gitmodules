@@ -1,35 +1,35 @@
 [submodule "rvgpu-mesa"]
 	path = rvgpu-mesa
-	url = https://gitee.com/rvgpu/rvgpu-mesa.git
+	url = https://github.com/rvgpu/rvgpu-mesa.git
     branch = rvgpu
 [submodule "rvgpu-cmodel"]
 	path = rvgpu-cmodel
-	url = https://gitee.com/rvgpu/rvgpu-cmodel.git
+	url = https://github.com/rvgpu/rvgpu-cmodel.git
     branch = main
 [submodule "rvgpu-llvm"]
 	path = rvgpu-llvm
-	url = https://gitee.com/rvgpu/rvgpu-llvm.git
+	url = https://github.com/rvgpu/rvgpu-llvm.git
     branch = rvgpu
 [submodule "docs"]
 	path = docs
-	url = https://gitee.com/rvgpu/docs.git
+	url = https://github.com/rvgpu/docs.git
     branch = main
 [submodule "tools"]
 	path = tools
-	url = https://gitee.com/rvgpu/tools.git
+	url = https://github.com/rvgpu/tools.git
     branch = main
 [submodule "qemu"]
 	path = qemu
-	url = https://gitee.com/rvgpu/qemu.git
+	url = https://github.com/rvgpu/qemu.git
     branch = rvgpu
 [submodule "kmod-drv"]
 	path = kmod-drv
-	url = https://gitee.com/rvgpu/kmod-drv.git
+	url = https://github.com/rvgpu/kmod-drv.git
 	branch = main
 [submodule "gvm"]
 	path = gvm
-	url = https://gitee.com/rvgpu/gvm.git
+	url = https://github.com/rvgpu/gvm.git
 [submodule "cuda_testbench"]
 	path = cuda_testbench
-	url = https://gitee.com/rvgpu/cuda_testbench.git
+	url = https://github.com/rvgpu/cuda_testbench.git
 	branch = main
