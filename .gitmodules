@@ -33,3 +33,7 @@
 	path = cuda_testbench
 	url = https://github.com/rvgpu/cuda_testbench.git
 	branch = main
+[submodule "hardware"]
+	path = hardware
+	url = https://github.com/rvgpu/hardware.git
+	branch = rvgpu
